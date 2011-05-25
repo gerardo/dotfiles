@@ -5,9 +5,9 @@ with my personal preferences.
 
 ## Installation
 
-`git clone git://github.com/gcuriel/dotfiles ~/.dotfiles`
-`cd ~/.dotfiles`
-`sh install.sh `
+    git clone git://github.com/gcuriel/dotfiles ~/.dotfiles
+    cd ~/.dotfiles
+    sh install.sh 
 
 ## Environment 
 
