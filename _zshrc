@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.zsh
 
+# your project folder that we can `c [tab]` to
+export PROJECTS=$HOME/Code
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -21,7 +24,7 @@ export ZSH_THEME="curiel"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx pip)
+plugins=(git osx pip brew)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -38,3 +41,7 @@ source "`brew --prefix grc`/etc/grc.bashrc"
 
  #Customize to your needs...
 export PATH=/Users/gerardo/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/X11/bin
+
+# use .localrc for settings specific to one system
+  [[ -f ~/.localrc ]] && . ~/.localrc]
+
