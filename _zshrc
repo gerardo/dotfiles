@@ -16,10 +16,10 @@ export ZSH_THEME="curiel"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
 if [[ "$unamestr" == 'Linux' ]]; then
-    plugins=(git pip debian deb)
+    plugins=(git pip debian deb django)
     source /etc/bash_completion.d/virtualenvwrapper
 elif [[ "$unamestr" == 'Darwin' ]]; then
-    plugins=(git osx pip brew)  
+    plugins=(git osx pip brew django)  
     source /usr/local/bin/virtualenvwrapper.sh
     #GRC
     source "`brew --prefix grc`/etc/grc.bashrc"
