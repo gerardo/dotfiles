@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.zsh
 
+unamestr=`uname`
+
 # your project folder that we can `c [tab]` to
 export PROJECTS=$HOME/Code
 
@@ -10,38 +12,31 @@ export PROJECTS=$HOME/Code
 # time that oh-my-zsh is loaded.
 export ZSH_THEME="curiel"
 
-# Set to this to use case-sensitive completion
-# export CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# export DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# export DISABLE_AUTO_TITLE="true"
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx pip brew)
+
+if [[ "$unamestr" == 'Linux' ]]; then
+    plugins=(git pip debian deb)
+    source /etc/bash_completion.d/virtualenvwrapper
+elif [[ "$unamestr" == 'Darwin' ]]; then
+    plugins=(git osx pip brew)  
+    source /usr/local/bin/virtualenvwrapper.sh
+    #GRC
+    source "`brew --prefix grc`/etc/grc.bashrc"
+fi
 
 source $ZSH/oh-my-zsh.sh
 
 # Required by virtualenvwrapper
-source /usr/local/bin/virtualenvwrapper.sh
 export WORKON_HOME=~/bin/Envs
 
 # Virtualenvwrapper + Pip goodness
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 
-#GRC
-source "`brew --prefix grc`/etc/grc.bashrc"
-
- #Customize to your needs...
-export PATH=/Users/gerardo/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/X11/bin
+export PATH=$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/X11/bin:/usr/games
 
 # use .localrc for settings specific to one system
-  [[ -f ~/.localrc ]] && . ~/.localrc]
+[[ -f $HOME/.localrc ]] && . $HOME/.localrc
+
 
