@@ -13,9 +13,11 @@ If you use the `Curiel` zsh theme from my oh-my-zsh fork(that's the current
 setup) you will need to install virtualenv and virtualenvwrapper.
 
 On Debian:
+
     aptitude install python-virtualenv virtualenvwrapper
 
 Or via `pip` on Mac OSX and others:
+
     pip install virtualenv virtualenvwrapper
 
 ## Environment 
