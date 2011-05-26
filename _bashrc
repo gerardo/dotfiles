@@ -145,7 +145,6 @@ function setdsm() {
     echo "DJANGO_SETTINGS_MODULE set to $DJANGO_SETTINGS_MODULE"
 }
 
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profiles
 # sources /etc/bash.bashrc).
@@ -157,4 +156,5 @@ export QUILT_PATCHES=debian/patches
 
 alias grep='grep --color'
 export EDITOR=vim
+
 
