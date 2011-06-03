@@ -1,6 +1,6 @@
 [submodule "_vim"]
 	path = _vim
-	url = git@github.com:gcuriel/vimfiles.git
+	url = git@github.com:gerardo/vimfiles.git
 [submodule "_zsh"]
 	path = _zsh
-	url = git@github.com:gcuriel/oh-my-zsh.git
+	url = git@github.com:gerardo/oh-my-zsh.git
