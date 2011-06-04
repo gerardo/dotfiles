@@ -5,7 +5,7 @@ with my personal preferences.
 
 ## Installation
 
-    git clone git://github.com/gcuriel/dotfiles ~/.dotfiles
+    git clone git://github.com/gerardo/dotfiles ~/.dotfiles
     cd ~/.dotfiles
     ./install.sh 
 
