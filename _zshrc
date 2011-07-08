@@ -16,16 +16,19 @@ export ZSH_THEME="curiel"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
 if [[ "$unamestr" == 'Linux' ]]; then
-    plugins=(git pip debian deb django)
+    plugins=(git git-flow pip debian deb django)
     source /etc/bash_completion.d/virtualenvwrapper
 elif [[ "$unamestr" == 'Darwin' ]]; then
-    plugins=(git osx pip brew django)  
+    plugins=(git git-flow pip brew django)  
     source /usr/local/bin/virtualenvwrapper.sh
     #GRC
     source "`brew --prefix grc`/etc/grc.bashrc"
 fi
 
 source $ZSH/oh-my-zsh.sh
+
+# Fix for .. completion
+zstyle ':completion:*' special-dirs true
 
 # Required by virtualenvwrapper
 export WORKON_HOME=~/bin/Envs
