@@ -12,14 +12,17 @@ export PROJECTS=$HOME/Code
 # time that oh-my-zsh is loaded.
 export ZSH_THEME="curiel"
 
+# PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/share/python:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/X11/bin:/usr/games
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
 if [[ "$unamestr" == 'Linux' ]]; then
-    plugins=(git git-flow pip debian deb django)
+    plugins=(git git-flow pip debian deb django vagrant)
     source /etc/bash_completion.d/virtualenvwrapper
 elif [[ "$unamestr" == 'Darwin' ]]; then
-    plugins=(git git-flow pip brew django)  
+    plugins=(git git-flow pip brew django vagrant)
     source /usr/local/bin/virtualenvwrapper.sh
     #GRC
     source "`brew --prefix grc`/etc/grc.bashrc"
@@ -31,13 +34,11 @@ source $ZSH/oh-my-zsh.sh
 zstyle ':completion:*' special-dirs true
 
 # Required by virtualenvwrapper
-export WORKON_HOME=~/bin/Envs
+export WORKON_HOME=$HOME/.virtualenvs
 
 # Virtualenvwrapper + Pip goodness
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
-
-export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/X11/bin:/usr/games
 
 # use .localrc for settings specific to one system
 [[ -f $HOME/.localrc ]] && . $HOME/.localrc
