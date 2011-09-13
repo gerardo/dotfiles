@@ -34,7 +34,7 @@ source $ZSH/oh-my-zsh.sh
 zstyle ':completion:*' special-dirs true
 
 # Required by virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME=~/bin/Envs
 
 # Virtualenvwrapper + Pip goodness
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
