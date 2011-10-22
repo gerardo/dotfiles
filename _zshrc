@@ -12,6 +12,8 @@ export PROJECTS=$HOME/Code
 # time that oh-my-zsh is loaded.
 export ZSH_THEME="curiel"
 
+export DISABLE_AUTO_UPDATE="true"
+
 # PATH
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/share/python:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/X11/bin:/usr/games
 
