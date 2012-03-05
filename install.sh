@@ -9,12 +9,12 @@ function link_file {
        if [ -f "${target}" ] &&  cmp $source $target &> /dev/null ; then
            echo "Identical: $target"
        else
-          mv $target $target.bak 
-          echo "Linking $target"          
+          mv $target $target.bak
+          echo "Linking $target"
           ln -sf ${source} ${target}
        fi
     else
-        echo "Linking $target"    
+        echo "Linking $target"
         ln -sf ${source} ${target}
     fi
 }
@@ -32,7 +32,7 @@ vimfiles=( _vimrc _gvimrc )
 
 for i in ${vimfiles[@]}
   do
-    link_file $i 
+    link_file $i
   done
 
 cd ..
@@ -45,12 +45,6 @@ git submodule update
 git submodule foreach git pull origin master
 git submodule foreach git submodule init
 git submodule foreach git submodule update
-
-echo "Building command-t"
-
-# setup command-t
-cd _vim/bundle/command-t
-rake make
 
 echo "Done!"
 

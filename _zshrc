@@ -21,10 +21,10 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/share/python:/usr/bin:/bin:/usr/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
 if [[ "$unamestr" == 'Linux' ]]; then
-    plugins=(git git-flow pip debian deb django vagrant)
+    plugins=(git git-flow pip debian deb django vagrant autojump)
     source /etc/bash_completion.d/virtualenvwrapper
 elif [[ "$unamestr" == 'Darwin' ]]; then
-    plugins=(git git-flow pip brew django vagrant)
+    plugins=(git git-flow pip brew django vagrant autojump)
     source /usr/local/bin/virtualenvwrapper.sh
     #GRC
     source "`brew --prefix grc`/etc/grc.bashrc"
