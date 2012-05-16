@@ -42,6 +42,8 @@ export WORKON_HOME=~/bin/Envs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 
+alias tmux="TERM=screen-256color-bce tmux"
+
 # use .localrc for settings specific to one system
 [[ -f $HOME/.localrc ]] && . $HOME/.localrc
 
