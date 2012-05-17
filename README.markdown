@@ -47,7 +47,7 @@ More information to come.
 
 ## Feedback
 
-Suggestions and improvements [welcome](https://github.com/gerardo/dotfiles/issues)!`
+Suggestions and improvements [welcome](https://github.com/gerardo/dotfiles/issues)!
 
 ## Thanks to…
 
