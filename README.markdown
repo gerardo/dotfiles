@@ -37,9 +37,9 @@ Mercurial, OSX/Linux.
 
 When setting up a new Mac, you may want to set some sensible OS X defaults:
 
-``bash
+```bash
 ./.osx
-``
+```
 
 ## Features
 
