@@ -10,7 +10,7 @@ export PROJECTS=$HOME/Code
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-export ZSH_THEME="curiel"
+export ZSH_THEME="agnoster"
 
 export DISABLE_AUTO_UPDATE="true"
 
@@ -21,12 +21,11 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/share/python:/usr/bin:/bin:/usr/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
 if [[ "$unamestr" == 'Linux' ]]; then
-    plugins=(git git-flow pip debian deb django vagrant autojump)
+    plugins=(git git-flow pip debian deb django vagrant autojump heroku python)
     source /etc/bash_completion.d/virtualenvwrapper
 elif [[ "$unamestr" == 'Darwin' ]]; then
-    plugins=(git git-flow pip brew django vagrant autojump)
+    plugins=(git git-flow pip brew django vagrant autojump heroku python)
     source /usr/local/bin/virtualenvwrapper.sh
-    #GRC
     source "`brew --prefix grc`/etc/grc.bashrc"
 fi
 
@@ -43,6 +42,11 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 
 alias tmux="TERM=screen-256color-bce tmux"
+
+# Autojump
+if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+fi
 
 # use .localrc for settings specific to one system
 [[ -f $HOME/.localrc ]] && . $HOME/.localrc

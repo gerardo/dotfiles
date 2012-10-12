@@ -5,20 +5,12 @@ with my personal preferences.
 
 ## Installation
 
-    git clone git://github.com/gerardo/dotfiles ~/.dotfiles
-    cd ~/.dotfiles
-    ./install.sh
+```bash
 
-If you use the `Curiel` zsh theme from my oh-my-zsh fork(that's the current
-setup) you will need to install virtualenv and virtualenvwrapper.
-
-On Debian:
-
-    aptitude install python-virtualenv virtualenvwrapper
-
-Or via `pip` on Mac OSX and others:
-
-    pip install virtualenv virtualenvwrapper
+$ git clone git://github.com/gerardo/dotfiles ~/.dotfiles
+$ cd ~/.dotfiles
+$ ./install.sh
+```
 
 ## Environment
 
@@ -30,20 +22,17 @@ ZSH, just change your shell with the following command:
 
 and you're all set!
 
-The environment is in the lines of Python, Django, homebrew, Vim, Git,
-Mercurial, OSX/Linux.
+The environment is in the lines of Python, Django, Homebrew, Vim, Git,
+OSX/Linux.
 
 ### Sensible OS X defaults
 
 When setting up a new Mac, you may want to set some sensible OS X defaults:
 
 ```bash
-./.osx
+$ ./.osx
 ```
 
-## Features
-
-More information to come.
 
 ## Feedback
 
