@@ -1,0 +1,21 @@
+[user]
+        name = Gerardo Curiel
+        email = gerardo@gerardo.cc
+[core]
+        editor = vim -f
+        excludesfile = /Users/gerardo/.gitignore_global
+[apply]
+    # Detect whitespace errors when applying a patch
+    whitespace = fix
+[github]
+        user = gerardo
+[color]
+	ui = auto
+[help]
+	autocorrect = 1
+[merge]
+        log = true
+        tool = meld
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
