@@ -4,6 +4,7 @@
 [core]
         editor = vim -f
 	excludesfile = /Users/gerardo/.gitignore_global
+	quotepath = false
 [apply]
     # Detect whitespace errors when applying a patch
     whitespace = fix
