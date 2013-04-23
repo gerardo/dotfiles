@@ -27,6 +27,11 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
     plugins=(git git-flow pip brew django vagrant autojump heroku python)
     source /usr/local/share/python/virtualenvwrapper.sh
     source "`brew --prefix grc`/etc/grc.bashrc"
+
+    # Autojump
+    if [ -f `brew --prefix`/etc/autojump ]; then
+      . `brew --prefix`/etc/autojump
+    fi
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -42,11 +47,6 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 
 alias tmux="TERM=screen-256color-bce tmux"
-
-# Autojump
-if [ -f `brew --prefix`/etc/autojump ]; then
-  . `brew --prefix`/etc/autojump
-fi
 
 # use .localrc for settings specific to one system
 [[ -f $HOME/.localrc ]] && . $HOME/.localrc
