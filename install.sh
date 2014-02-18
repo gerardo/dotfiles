@@ -48,8 +48,8 @@ git submodule foreach git submodule update
 
 # YouCompleteMe
 cd ${HOME}/.vim/bundle/YouCompleteMe/
-./install.sh
 git submodule update --init --recursive
+./install.sh
 
 echo "Done!"
 
