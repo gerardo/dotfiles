@@ -25,7 +25,7 @@ if [[ "$unamestr" == 'Linux' ]]; then
     source /etc/bash_completion.d/virtualenvwrapper
 elif [[ "$unamestr" == 'Darwin' ]]; then
     plugins=(git pip brew django vagrant autojump heroku python bower coffee fabric)
-    source /usr/local/share/python/virtualenvwrapper.sh
+    source /usr/local/bin/virtualenvwrapper.sh
     source "`brew --prefix grc`/etc/grc.bashrc"
 
     # Autojump
@@ -50,3 +50,4 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 # use .localrc for settings specific to one system
 [[ -f $HOME/.localrc ]] && . $HOME/.localrc
+
