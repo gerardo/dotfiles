@@ -1,18 +1,15 @@
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.zsh
 
-unamestr=`uname`
-
-# your project folder that we can `c [tab]` to
-export PROJECTS=$HOME/Code
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 export ZSH_THEME="agnoster"
 
-export DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
+COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # PATH
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/X11/bin:/usr/games
@@ -20,24 +17,23 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sb
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
+unamestr=`uname`
+
 if [[ "$unamestr" == 'Linux' ]]; then
-    plugins=(git pip debian django vagrant autojump heroku python bower coffee fabric)
+    plugins=(git pip django vagrant autojump python bower docker dirhistory extract history-substring-search)
     source /etc/bash_completion.d/virtualenvwrapper
 elif [[ "$unamestr" == 'Darwin' ]]; then
-    plugins=(git pip brew django vagrant autojump heroku python bower coffee fabric)
+    plugins=(git pip django vagrant autojump python bower docker dirhistory extract history-substring-search brew brew-cask)
     source /usr/local/bin/virtualenvwrapper.sh
-    source "`brew --prefix grc`/etc/grc.bashrc"
-
-    # Autojump
-    if [ -f `brew --prefix`/etc/autojump ]; then
-      . `brew --prefix`/etc/autojump
-    fi
 fi
 
 source $ZSH/oh-my-zsh.sh
 
 # Fix for .. completion
 zstyle ':completion:*' special-dirs true
+
+# your project folder that we can `c [tab]` to
+export PROJECTS=$HOME/Code
 
 # Required by virtualenvwrapper
 export WORKON_HOME=~/bin/Envs
