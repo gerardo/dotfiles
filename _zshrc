@@ -20,7 +20,7 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sb
 unamestr=`uname`
 
 if [[ "$unamestr" == 'Linux' ]]; then
-    plugins=(virtualenvwrapper git pip django vagrant autojump python bower docker dirhistory extract history-substring-search)
+    plugins=(git pip django vagrant autojump python bower docker dirhistory extract history-substring-search)
     if [[ -f "/etc/bash_completion.d/virtualenvwrapper" ]]; then
         source /etc/bash_completion.d/virtualenvwrapper
     fi
