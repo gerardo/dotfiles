@@ -5,6 +5,7 @@
         editor = vim -f
 	excludesfile = /Users/gerardo/.gitignore_global
 	quotepath = false
+	autocrlf = input
 [apply]
     # Detect whitespace errors when applying a patch
     whitespace = fix
