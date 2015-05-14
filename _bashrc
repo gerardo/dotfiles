@@ -15,7 +15,7 @@ shopt -s checkwinsize
 
 if [ "$TERM" != "dumb" ]; then
     if [[ $platform == 'linux' ]]; then
-        eval "`dircolors -b`" 
+        eval "`dircolors -b`"
         alias ls='ls --color=auto'
     elif [[ $platform == 'darwin' ]]; then
         alias ls='ls -G'
@@ -62,8 +62,8 @@ let promptsize=$(echo -n "--(${usernam}@${hostnam}:${cur_tty})---(${PWD})--" \
                  | wc -c | tr -d " ")
 let fillsize=${TERMWIDTH}-${promptsize}
 fill=""
-while [ "$fillsize" -gt "0" ] 
-do 
+while [ "$fillsize" -gt "0" ]
+do
     fill="${fill}-"
     let fillsize=${fillsize}-1
 done
@@ -89,9 +89,9 @@ local YELLOW="\[\033[1;33m\]"
 
 local BLUE="\[\033[1;34m\]"
 local RED="\[\033[1;31m\]"
-local GREEN="\[\033[0;32m\]" 
-local LIGHT_GREEN="\[\033[1;32m\]" 
-local CYAN="\[\033[0;36m\]" 
+local GREEN="\[\033[0;32m\]"
+local LIGHT_GREEN="\[\033[1;32m\]"
+local CYAN="\[\033[0;36m\]"
 local MAGENTA="\[\033[1;35m\]"
 case $TERM in
     xterm-color)
@@ -119,7 +119,7 @@ $LIGHT_BLUE)-$CYAN-\
 $CYAN-$LIGHT_BLUE-(\
 $LIGHT_GREEN\$(date \"+%a %b %d\")$LIGHT_BLUE|$LIGHT_GREEN\$(date +%H:%M)\
 $MAGENTA\$git_branch$WHITE\$$LIGHT_BLUE)-\
-$NO_COLOUR " 
+$NO_COLOUR "
 
 PS2="$LIGHT_BLUE-$YELLOW-$YELLOW-$NO_COLOUR "
 
@@ -135,10 +135,10 @@ function setdsm() {
     # sets DJANGO_SETTINGS_MODULE
     export PYTHONPATH=$PYTHONPATH:$PWD/..
     export PYTHONPATH=$PYTHONPATH:$PWD
-    if [ -z "$1" ]; then 
+    if [ -z "$1" ]; then
         x=${PWD/\/[^\/]*\/}
         export DJANGO_SETTINGS_MODULE=$x.settings
-    else    
+    else
         export DJANGO_SETTINGS_MODULE=$1
     fi
 
@@ -156,5 +156,4 @@ export QUILT_PATCHES=debian/patches
 
 alias grep='grep --color'
 export EDITOR=vim
-
 
