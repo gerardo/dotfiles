@@ -1,20 +1,20 @@
 [user]
-	name = Gerardo Curiel
-	email = gerardo@gerardo.cc
+        name = Gerardo Curiel
+        email = gerardo@gerardo.cc
 [core]
         editor = vim -f
-	excludesfile = /Users/gerardo/.gitignore_global
-	quotepath = false
-	autocrlf = input
+        excludesfile = /Users/gerardo/.gitignore_global
+        quotepath = false
+        autocrlf = input
 [apply]
     # Detect whitespace errors when applying a patch
     whitespace = fix
 [github]
         user = gerardo
 [color]
-	ui = auto
+        ui = auto
 [help]
-	autocorrect = 1
+        autocorrect = 1
 [merge]
         log = true
         tool = meld
@@ -22,8 +22,8 @@
     remote = origin
     merge = refs/heads/master
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+        cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+        path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+        cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+        trustExitCode = true
