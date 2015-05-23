@@ -46,10 +46,5 @@ git submodule foreach git pull origin master
 git submodule foreach git submodule init
 git submodule foreach git submodule update
 
-# YouCompleteMe
-cd ${HOME}/.vim/bundle/YouCompleteMe/
-git submodule update --init --recursive
-./install.sh
-
 echo "Done!"
 
