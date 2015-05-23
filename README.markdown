@@ -27,7 +27,7 @@ OSX/Linux.
 
 ### Sensible OS X defaults
 
-When setting up a new Mac, you may want to set some sensible OS X defaults:
+When setting up a new Mac, you may want to set some sensible OS X defaults (it supports Yosemite!):
 
 ```bash
 $ ./.osx
