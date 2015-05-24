@@ -19,34 +19,29 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sb
 
 unamestr=`uname`
 
+plugins=(
+    git
+    git-extras
+    python
+    pip
+    django
+    virtualenvwrapper
+    fasd
+    bower
+    docker
+    aws
+    dirhistory
+    extract
+    history-substring-search
+)
+
 if [[ "$unamestr" == 'Linux' ]]; then
     plugins=(
-      git
-      python
-      pip
-      django
-      vagrant
-      autojump
-      bower
-      docker
-      dirhistory
-      extract
-      history-substring-search
+      debian
     )
 elif [[ "$unamestr" == 'Darwin' ]]; then
-    plugins=(
-        git
-        python
-        virtualenvwrapper
-        pip
-        django
+    plugins+=(
         vagrant
-        autojump
-        bower
-        docker
-        dirhistory
-        extract
-        history-substring-search
         brew
         brew-cask
       )
