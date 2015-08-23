@@ -29,6 +29,7 @@ plugins=(
     fasd
     bower
     docker
+    docker-compose
     aws
     dirhistory
     extract
