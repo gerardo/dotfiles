@@ -24,15 +24,13 @@ plugins=(
     git-extras
     python
     pip
-    django
-    virtualenvwrapper
     fasd
     bower
     docker
     docker-compose
     aws
-    dirhistory
     extract
+    dirhistory
     history-substring-search
 )
 
@@ -42,7 +40,6 @@ if [[ "$unamestr" == 'Linux' ]]; then
     )
 elif [[ "$unamestr" == 'Darwin' ]]; then
     plugins+=(
-        vagrant
         brew
         brew-cask
       )
@@ -55,12 +52,6 @@ zstyle ':completion:*' special-dirs true
 
 # your project folder that we can `c [tab]` to
 export PROJECTS=$HOME/Code
-# Required by virtualenvwrapper
-export WORKON_HOME=~/bin/Envs
-
-# Virtualenvwrapper + Pip goodness
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
 
 alias tmux="TERM=screen-256color-bce tmux"
 
