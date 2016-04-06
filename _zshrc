@@ -25,7 +25,6 @@ plugins=(
     python
     pip
     fasd
-    bower
     docker
     docker-compose
     aws
