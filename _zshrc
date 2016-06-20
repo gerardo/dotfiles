@@ -23,6 +23,7 @@ plugins=(
     git
     git-extras
     python
+    virtualenvwrapper
     pip
     fasd
     docker
@@ -53,6 +54,9 @@ zstyle ':completion:*' special-dirs true
 export PROJECTS=$HOME/Code
 
 alias tmux="TERM=screen-256color-bce tmux"
+
+# Python
+export WORKON_HOME=~/Envs
 
 # use .localrc for settings specific to one system
 [[ -f $HOME/.zshrc.local ]] && . $HOME/.zshrc.local
