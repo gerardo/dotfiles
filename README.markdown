@@ -22,17 +22,15 @@ ZSH, just change your shell with the following command:
 
 and you're all set!
 
-The environment is in the lines of Python, Django, Homebrew, Vim, Git,
-OSX/Linux.
+The environment is in the lines of Python, Homebrew, Vim, Git, OSX/Linux.
 
 ### Sensible OS X defaults
 
-When setting up a new Mac, you may want to set some sensible OS X defaults (it supports Yosemite!):
+When setting up a new Mac, you may want to set some sensible OS X defaults:
 
 ```bash
-$ ./.osx
+$ ./.macos
 ```
-
 
 ## Feedback
 
