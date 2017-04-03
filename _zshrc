@@ -1,39 +1,24 @@
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-export ZSH_THEME="agnoster"
+export ZSH_THEME="pure"
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+unamestr=`uname`
+
 # PATH
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/X11/bin:/usr/games
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-
-unamestr=`uname`
-
 plugins=(
-    git
-    git-extras
-    python
-    pip
-    django
-    virtualenvwrapper
-    fasd
-    bower
-    docker
-    docker-compose
-    aws
-    dirhistory
-    extract
-    history-substring-search
+    aws httpie osx gpg-agent ssh-agent
+    git git-extras github
+    tmux fasd dirhistory extract history-substring-search
+    python pip virtualenvwrapper sbt scala
+    docker docker-compose
 )
 
 if [[ "$unamestr" == 'Linux' ]]; then
@@ -42,9 +27,7 @@ if [[ "$unamestr" == 'Linux' ]]; then
     )
 elif [[ "$unamestr" == 'Darwin' ]]; then
     plugins+=(
-        vagrant
         brew
-        brew-cask
       )
 fi
 
@@ -55,17 +38,18 @@ zstyle ':completion:*' special-dirs true
 
 # your project folder that we can `c [tab]` to
 export PROJECTS=$HOME/Code
-# Required by virtualenvwrapper
-export WORKON_HOME=~/bin/Envs
 
 # Virtualenvwrapper + Pip goodness
+export WORKON_HOME=~/bin/Envs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 
 alias tmux="TERM=screen-256color-bce tmux"
 
+export PATH="$HOME/.bin:$PATH"
+eval "$(rbenv init - zsh --no-rehash)"
+
 # use .localrc for settings specific to one system
 [[ -f $HOME/.zshrc.local ]] && . $HOME/.zshrc.local
 
-export PATH="$HOME/.bin:$PATH"
-eval "$(rbenv init - zsh --no-rehash)"
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
