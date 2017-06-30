@@ -16,7 +16,7 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sb
 plugins=(
     aws httpie osx gpg-agent ssh-agent
     git git-extras github
-    tmux fasd dirhistory extract
+    tmux fasd dirhistory extract alias-tips
     history-substring-search zsh-autosuggestions
     python pip virtualenvwrapper sbt scala
     docker docker-compose
