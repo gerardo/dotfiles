@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.zsh
 
-export ZSH_THEME="pure"
+export ZSH_THEME=""
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -11,6 +11,7 @@ unamestr=`uname`
 
 # PATH
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/X11/bin:/usr/games
+fpath=( "$ZSH/custom/themes/pure" $fpath )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
@@ -31,6 +32,9 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
+
+autoload -U promptinit; promptinit
+prompt pure
 
 # Fix for .. completion
 zstyle ':completion:*' special-dirs true
