@@ -14,11 +14,10 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sb
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
-    aws httpie osx gpg-agent ssh-agent
-    git git-extras github
-    tmux fasd dirhistory extract history-substring-search
-    python pip virtualenvwrapper sbt scala
-    docker docker-compose
+    z dirhistory alias-tips history-substring-search zsh-autosuggestions
+    git git-extras github aws httpie
+    python pip virtualenvwrapper sbt scala docker docker-compose
+    osx ssh-agent
 )
 
 if [[ "$unamestr" == 'Linux' ]]; then
@@ -44,12 +43,15 @@ export WORKON_HOME=~/bin/Envs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 
-alias tmux="TERM=screen-256color-bce tmux"
-
 export PATH="$HOME/.bin:$PATH"
 eval "$(rbenv init - zsh --no-rehash)"
 
 # use .localrc for settings specific to one system
 [[ -f $HOME/.zshrc.local ]] && . $HOME/.zshrc.local
 
+proj() {
+    cd $(find ~/Code -maxdepth 2 -type d | fzy)
+}
+
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/custom/plugins/enhancd/init.sh
