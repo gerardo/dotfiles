@@ -19,3 +19,5 @@
 [user]
 	name = Gerardo Curiel
 	email = gerardo.curiel@rea-group.com
+[hub]
+	host = git.realestate.com.au
