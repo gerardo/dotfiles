@@ -1,8 +1,9 @@
 [core]
         editor = vim -f
-        excludesfile = /Users/gerardo/.gitignore_global
+        excludesfile = ~/.gitignore_global
         quotepath = false
         autocrlf = input
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [apply]
     # Detect whitespace errors when applying a patch
     whitespace = fix
@@ -12,7 +13,6 @@
         autocorrect = 1
 [merge]
         log = true
-        tool = meld
 [branch "master"]
     remote = origin
     merge = refs/heads/master
