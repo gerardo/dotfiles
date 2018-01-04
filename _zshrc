@@ -30,7 +30,6 @@ if [[ "$unamestr" == 'Linux' ]]; then
     )
 elif [[ "$unamestr" == 'Darwin' ]]; then
     plugins+=(
-        brew
         osx
       )
 fi
