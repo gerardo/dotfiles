@@ -57,5 +57,7 @@ eval "$(rbenv init - zsh --no-rehash)"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/custom/plugins/enhancd/init.sh
 
+export ENHANCD_DISABLE_DOT=1
+
 # use .localrc for settings specific to one system
 [[ -f $HOME/.zshrc.local ]] && . $HOME/.zshrc.local
