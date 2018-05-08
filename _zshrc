@@ -47,6 +47,8 @@ proj() {
     cd $(find ~/Code -maxdepth 2 -type d | fzy)
 }
 
+alias gview=tig
+
 # RBEnv
 export PATH="$HOME/.bin:$PATH"
 eval "$(rbenv init - zsh --no-rehash)"
