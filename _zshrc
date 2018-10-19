@@ -17,10 +17,10 @@ fpath=( "$ZSH/custom/themes/pure" $fpath )
 plugins=(
     z dirhistory history-substring-search zsh-autosuggestions alias-tips
     git git-extras github
-    python pip
-    sbt scala
+    python pip pep8 autopep8
+    sbt scala vscode
     aws httpie
-    docker docker-compose
+    docker docker-compose kubectl
     ssh-agent
 )
 
