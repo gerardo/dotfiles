@@ -97,7 +97,7 @@ module.exports = {
 
     // for advanced config flags please refer to https://hyper.is/#cfg
   },
-
+  
   // a list of plugins to fetch and install from npm
   // format: [@org/]project[#version]
   // examples:
@@ -106,9 +106,10 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
       "hyper-snazzy",
-      "hypercwd",
+      "hyper-tab-icons",
       "hyperterm-safepaste",
-      "hyperterm-dibdabs",
+      "hypercwd",
+      "hyper-match",
       "hyper-pane"
   ],
 
