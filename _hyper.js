@@ -5,7 +5,7 @@
 module.exports = {
   config: {
     // default font size in pixels for all tabs
-    fontSize: 12,
+    fontSize: 16,
 
     // font family with optional fallbacks
     fontFamily: '"Meslo LG S DZ For Powerline", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -105,13 +105,14 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-      "hyper-snazzy",
-      "hyper-tab-icons",
-      "hypercwd",
-      "hyper-match",
-      "hyper-pane"
+    "hyper-snazzy",
+    "hyper-tab-icons",
+    "hypercwd",
+    "hyper-match",
+    "hyper-pane",
+    "hyper-rose-pine",
+    "hyperocean"
   ],
-
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
   // to load it and avoid it being `npm install`ed
