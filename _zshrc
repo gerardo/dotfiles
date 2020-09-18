@@ -91,5 +91,9 @@ preexec_functions=($preexec_functions tabtitle_preexec)
 
 ### END Title fix
 
+SPACESHIP_NODE_SHOW=false
+SPACESHIP_AWS_SHOW=false
+SPACESHIP_GCLOUD_SHOW=false
+
 # use .localrc for settings specific to one system
 [[ -f $HOME/.zshrc.local ]] && . $HOME/.zshrc.local
