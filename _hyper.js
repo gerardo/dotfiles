@@ -110,7 +110,6 @@ module.exports = {
     "hypercwd",
     "hyper-match",
     "hyper-pane",
-    "hyper-rose-pine",
     "hyperocean"
   ],
   // in development, you can create a directory under

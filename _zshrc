@@ -23,9 +23,9 @@ plugins=(
     z dirhistory history-substring-search zsh-autosuggestions alias-tips
     git git-extras github
     python pip pep8 autopep8
-    sbt scala vscode
+    vscode
     aws httpie
-    docker docker-compose kubectl
+    docker docker-compose
     ssh-agent
 )
 
@@ -35,8 +35,8 @@ if [[ "$unamestr" == 'Linux' ]]; then
     )
 elif [[ "$unamestr" == 'Darwin' ]]; then
     plugins+=(
-        osx
-      )
+        macos
+    )
 fi
 
 source $ZSH/oh-my-zsh.sh
