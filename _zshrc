@@ -20,8 +20,8 @@ export LANG=en_US.UTF-8
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
-    z dirhistory history-substring-search zsh-autosuggestions alias-tips
-    git git-extras github
+    z dirhistory history-substring-search zsh-autosuggestions
+    git git-extras
     python pip pep8 autopep8
     vscode
     aws httpie
