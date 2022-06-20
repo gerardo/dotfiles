@@ -1,34 +1,20 @@
-# Path to your oh-my-zsh configuration.
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 export ZSH=$HOME/.zsh
-
 export ZSH_THEME="spaceship"
 
-DISABLE_AUTO_UPDATE="true"
-COMPLETION_WAITING_DOTS="true"
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-DISABLE_AUTO_TITLE="true"
+zstyle ':omz:update' mode disabled
 
-unamestr=`uname`
-
-# PATH
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/X11/bin:/usr/games
-
-# Set language
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
-    z dirhistory history-substring-search zsh-autosuggestions
-    git git-extras
+    z history dirhistory history-substring-search zsh-autosuggestions
+    alias-tips alias-finder command-not-found
+    ag extract ssh-agent keychain gpg-agent
+    git git-extras gh
     python pip pep8 autopep8
-    vscode
-    aws httpie
-    docker docker-compose
-    ssh-agent
+    gcloud httpie docker docker-compose
+    1password vscode
 )
 
+unamestr=$(uname)
 if [[ "$unamestr" == 'Linux' ]]; then
     plugins=(
       debian
@@ -39,61 +25,20 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
     )
 fi
 
-source $ZSH/oh-my-zsh.sh
+# Configuration
+zstyle :omz:plugins:keychain agents gpg,ssh
+COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Fix for .. completion
-zstyle ':completion:*' special-dirs true
+source $ZSH/oh-my-zsh.sh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/custom/plugins/enhancd/init.sh
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export ENHANCD_HOOK_AFTER_CD=ls
+export ZSH_ALIAS_FINDER_AUTOMATIC=true
 
 # Aliases
 proj() {
     cd $(find ~/Code -maxdepth 2 -type d | fzy)
 }
-
-alias gview=tig
-
-# RBEnv
-export PATH="$HOME/.bin:$PATH"
-eval "$(rbenv init - zsh --no-rehash)"
-
-# Other plugins
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/custom/plugins/enhancd/init.sh
-
-export ENHANCD_DISABLE_DOT=1
-
-### Title fix
-# Override auto-title when static titles are desired ($ title My new title)
-title() { export TITLE_OVERRIDDEN=1; echo -en "\e]0;$*\a"}
-# Turn off static titles ($ autotitle)
-autotitle() { export TITLE_OVERRIDDEN=0 }; autotitle
-# Condition checking if title is overridden
-overridden() { [[ $TITLE_OVERRIDDEN == 1 ]]; }
-# Echo asterisk if git state is dirty
-gitDirty() { [[ $(git status 2> /dev/null | grep -o '\w\+' | tail -n1) != ("clean"|"") ]] && echo "*" }
-
-# Show cwd when shell prompts for input.
-tabtitle_precmd() {
-   if overridden; then return; fi
-   pwd=$(pwd) # Store full path as variable
-   cwd=${pwd##*/} # Extract current working dir only
-   print -Pn "\e]0;$cwd$(gitDirty)\a" # Replace with $pwd to show full path
-}
-[[ -z $precmd_functions ]] && precmd_functions=()
-precmd_functions=($precmd_functions tabtitle_precmd)
-
-# Prepend command (w/o arguments) to cwd while waiting for command to complete.
-tabtitle_preexec() {
-   if overridden; then return; fi
-   printf "\033]0;%s\a" "${1%% *} | $cwd$(gitDirty)" # Omit construct from $1 to show args
-}
-[[ -z $preexec_functions ]] && preexec_functions=()
-preexec_functions=($preexec_functions tabtitle_preexec)
-
-### END Title fix
-
-SPACESHIP_NODE_SHOW=false
-SPACESHIP_AWS_SHOW=false
-SPACESHIP_GCLOUD_SHOW=false
-
-# use .localrc for settings specific to one system
-[[ -f $HOME/.zshrc.local ]] && . $HOME/.zshrc.local
