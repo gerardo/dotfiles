@@ -1,28 +1,35 @@
 [core]
-        editor = vim -f
-	excludesfile = ~/.gitignore_global
-        quotepath = false
-        autocrlf = input
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    editor = vim -f
+    excludesfile = ~/.gitignore_global
+    quotepath = false
+    autocrlf = input
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
 [apply]
     # Detect whitespace errors when applying a patch
     whitespace = fix
 [color]
-        ui = auto
+    ui = auto
 [help]
-        autocorrect = 1
+    autocorrect = 1
 [merge]
-        log = true
+    log = true
+    conflictstyle = diff3
 [branch "master"]
     remote = origin
     merge = refs/heads/master
 [user]
-	name = Gerardo Curiel
-	email = gerardo.curiel@rea-group.com
-[hub]
-	host = git.realestate.com.au
+    name = Gerardo Curiel
+    email = gerardo.curiel@rea-group.com
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    light = false    # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    line-numbers = true
+[diff]
+    colorMoved = default

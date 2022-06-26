@@ -1,12 +1,12 @@
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin/
 export ZSH=$HOME/.zsh
 export ZSH_THEME="spaceship"
 
 zstyle ':omz:update' mode disabled
 
 plugins=(
-    z history dirhistory history-substring-search zsh-autosuggestions
-    alias-tips alias-finder command-not-found
+    zoxide history dirhistory history-substring-search zsh-autosuggestions
+    alias-tips alias-finder
     ag extract ssh-agent keychain gpg-agent
     git git-extras gh
     python pip pep8 autopep8
@@ -35,10 +35,19 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/custom/plugins/enhancd/init.sh
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export ENHANCD_HOOK_AFTER_CD=ls
+export ENHANCD_HOOK_AFTER_CD="ls -a"
 export ZSH_ALIAS_FINDER_AUTOMATIC=true
 
 # Aliases
 proj() {
     cd $(find ~/Code -maxdepth 2 -type d | fzy)
 }
+
+alias ls="lsd"
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
+# Extras
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
