@@ -1,39 +1,58 @@
 #!/usr/bin/env sh
 
-# global settings
-yabai -m config mouse_follows_focus          off
+# Starting
+
+## For this to work you must configure sudo such that
+## it will be able to run the command without password
+## You will need to update the sudoers file after updating yabai
+
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# Space settings
+
+## general space settings
+yabai -m config layout                       bsp
+yabai -m config top_padding                  08
+yabai -m config bottom_padding               08
+yabai -m config left_padding                 08
+yabai -m config right_padding                08
+yabai -m config window_gap                   08
+
+# Mouse settings
+
+## center mouse on window with focus
+yabai -m config mouse_follows_focus          on
 yabai -m config focus_follows_mouse          off
-yabai -m config window_placement             second_child
-yabai -m config window_topmost               on
-yabai -m config window_shadow                float
-yabai -m config window_opacity               on
-yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.90
-yabai -m config window_border                on
-yabai -m config window_border_width          5
-yabai -m config active_window_border_color   0xff775759
-yabai -m config normal_window_border_color   0xff555555
-yabai -m config insert_feedback_color        0xffd75f5f
+# modifier for clicking and dragging with mouse
+yabai -m config mouse_modifier               fn
+# set modifier + left-click drag to move window
+yabai -m config mouse_action1                move
+# set modifier + right-click drag to resize window
+yabai -m config mouse_action2                resize
+# when window is dropped in center of another window, swap them (on edges it will split it)
+yabai -m mouse_drop_action                   swap
+
+# Window settings
+
 yabai -m config split_ratio                  0.50
 yabai -m config auto_balance                 off
-yabai -m config mouse_modifier               fn
-yabai -m config mouse_action1                move
-yabai -m config mouse_action2                resize
-yabai -m config mouse_drop_action            swap
+yabai -m config window_topmost               on
+yabai -m config window_shadow                float
+yabai -m config window_placement             second_child
+yabai -m config window_opacity               on
+yabai -m config active_window_opacity        1.0
+yabai -m config normal_window_opacity        0.9
+yabai -m config window_border                off
+yabai -m config window_border_hidpi          on
+yabai -m config window_border_width          3
+yabai -m config active_window_border_color   0xff669900
+yabai -m config normal_window_border_color   0xff555555
+yabai -m config insert_feedback_color        0xffd75f5f
 
-# general space settings
-yabai -m config layout                       bsp
-yabai -m config top_padding                  12
-yabai -m config bottom_padding               12
-yabai -m config left_padding                 12
-yabai -m config right_padding                12
-yabai -m config window_gap                   06
-
-# Float first space
-yabai -m config --space 1 layout             float
-
-# window rules
-yabai -m rule --add app="^System Preferences$" manage=off
-yabai -m rule --add app="^Contexts$" manage=off
+# Window rules
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Karabiner-Elements$" manage=off
 
 echo "yabai configuration loaded.."
