@@ -27,21 +27,19 @@ fi
 
 # Configuration
 zstyle :omz:plugins:keychain agents gpg,ssh
-COMPLETION_WAITING_DOTS="true"
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+export COMPLETION_WAITING_DOTS="false"
+export DISABLE_UNTRACKED_FILES_DIRTY="true"
+export ENHANCD_FILTER="fzf --preview='exa --tree --group-directories-first --git-ignore --level 1 {}'"
+export ENHANCD_ENABLE_DOUBLE_DOT="false"
+export ENHANCD_HOOK_AFTER_CD="ls -a"
+export ZSH_ALIAS_FINDER_AUTOMATIC=true
 
 source $ZSH/oh-my-zsh.sh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/custom/plugins/enhancd/init.sh
+source virtualenvwrapper.sh
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-export ENHANCD_HOOK_AFTER_CD="ls -a"
-export ZSH_ALIAS_FINDER_AUTOMATIC=true
-
-# Aliases
-proj() {
-    cd $(find ~/Code -maxdepth 2 -type d | fzy)
-}
+source "${HOME}/.zshrc.local"
 
 alias ls="lsd"
 alias l='ls -l'
@@ -51,3 +49,5 @@ alias lt='ls --tree'
 
 # Extras
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
