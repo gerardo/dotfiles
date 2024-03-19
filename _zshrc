@@ -50,4 +50,3 @@ alias lt='ls --tree'
 # Extras
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
