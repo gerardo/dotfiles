@@ -102,7 +102,7 @@ alt - w : yabai -m window --close
 ctrl + alt + cmd - r : yabai --restart-service
 
 # open terminal, blazingly fast
-cmd - return : osascript -e "tell application \"iTerm2\"" \
+ctrl - return : osascript -e "tell application \"iTerm2\"" \
           -e "set newWindow to (create window with default profile)" \
           -e "tell current session of newWindow" \
           -e "end tell" \
