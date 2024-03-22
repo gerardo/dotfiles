@@ -21,7 +21,7 @@
     merge = refs/heads/master
 [user]
     name = Gerardo Curiel
-    email = gerardo.curiel@rea-group.com
+    email = gerardo@gerar.do
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
@@ -33,3 +33,5 @@
     line-numbers = true
 [diff]
     colorMoved = default
+[includeIf "gitdir:~/REACode/"]
+    path = ~/.gitconfig_work
