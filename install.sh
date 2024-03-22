@@ -37,7 +37,18 @@ for i in ${vimfiles[@]}
 
 cd ..
 
-echo "Git syncing"
+echo "Git syncing in main directory"
+
+git submodule sync
+git submodule init
+git submodule update
+git submodule foreach git pull origin master
+git submodule foreach git submodule init
+git submodule foreach git submodule update
+
+echo "Git syncing in _zsh  directory"
+
+cd _zsh/
 
 git submodule sync
 git submodule init
@@ -47,4 +58,3 @@ git submodule foreach git submodule init
 git submodule foreach git submodule update
 
 echo "Done!"
-
