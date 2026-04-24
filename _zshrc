@@ -5,7 +5,7 @@ export ZSH_THEME="spaceship"
 zstyle ':omz:update' mode disabled
 
 plugins=(
-    zoxide history dirhistory history-substring-search zsh-autosuggestions
+    history dirhistory history-substring-search zsh-autosuggestions
     alias-tips alias-finder
     ag extract ssh-agent keychain gpg-agent
     git git-extras gh
@@ -29,7 +29,7 @@ fi
 zstyle :omz:plugins:keychain agents gpg,ssh
 export COMPLETION_WAITING_DOTS="false"
 export DISABLE_UNTRACKED_FILES_DIRTY="true"
-export ENHANCD_FILTER="fzf --preview='exa --tree --group-directories-first --git-ignore --level 1 {}'"
+export ENHANCD_FILTER="fzf --preview='lsd --tree --group-directories-first --depth 1 {}'"
 export ENHANCD_ENABLE_DOUBLE_DOT="false"
 export ENHANCD_HOOK_AFTER_CD="ls -a"
 export ZSH_ALIAS_FINDER_AUTOMATIC=true
