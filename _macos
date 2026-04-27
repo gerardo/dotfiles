@@ -160,17 +160,6 @@ sudo pmset -b sleep 5
 sudo pmset -a standbydelayhigh 86400
 sudo pmset -a standbydelaylow 86400
 
-# Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
-
-# Hibernation mode
-# 0: Disable hibernation (speeds up entering sleep mode)
-# 3: Copy RAM to disk so the system state can still be restored in case of a
-#    power failure.
-# 25: Force copying RAM to disk always
-sudo pmset -a hibernatemode 0
-
-
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
@@ -425,9 +414,8 @@ defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
 # Disable auto-correct
 defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
 
-# Disable AutoFill
+# Disable Safari AutoFill for personal and payment details
 defaults write com.apple.Safari AutoFillFromAddressBook -bool false
-defaults write com.apple.Safari AutoFillPasswords -bool false
 defaults write com.apple.Safari AutoFillCreditCardData -bool false
 defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
 
