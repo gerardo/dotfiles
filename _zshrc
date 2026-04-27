@@ -1,6 +1,7 @@
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin/
 export ZSH=$HOME/.zsh
-export ZSH_THEME="spaceship"
+# export ZSH_THEME="spaceship"
+export STARSHIP_CONFIG=~/.starship.toml
 
 zstyle ':omz:update' mode disabled
 
@@ -12,6 +13,7 @@ plugins=(
     python pip pep8 autopep8
     gcloud httpie docker docker-compose
     1password vscode
+    starship
 )
 
 unamestr=$(uname)
