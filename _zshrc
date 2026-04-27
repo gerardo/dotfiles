@@ -1,52 +1,81 @@
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin/
+# Paths
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# Oh My Zsh
 export ZSH=$HOME/.zsh
-# export ZSH_THEME="spaceship"
 export STARSHIP_CONFIG=~/.starship.toml
+export ZOXIDE_CMD_OVERRIDE=cd
 
 zstyle ':omz:update' mode disabled
 
+# Completion and plugin configuration
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' menu no
+zstyle ':omz:plugins:eza' dirs-first yes
+zstyle ':omz:plugins:eza' git-status yes
+zstyle ':omz:plugins:eza' icons yes
+zstyle ':omz:plugins:ssh-agent' quiet yes
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+
+export COMPLETION_WAITING_DOTS="false"
+export DISABLE_UNTRACKED_FILES_DIRTY="true"
+export ZSH_ALIAS_FINDER_AUTOMATIC=true
+
 plugins=(
-    history dirhistory history-substring-search zsh-autosuggestions
-    alias-tips alias-finder
-    ag extract ssh-agent keychain gpg-agent
-    git git-extras gh
-    python pip pep8 autopep8
-    gcloud httpie docker docker-compose
-    1password vscode
+    history
+    dirhistory
+    history-substring-search
+    fzf
+    fzf-tab
+    zsh-autosuggestions
+    alias-tips
+    alias-finder
+    extract
+    ssh-agent
+    git
+    git-extras
+    gh
+    python
+    pip
+    eza
+    zoxide
+    gcloud
+    httpie
+    docker
+    docker-compose
+    1password
+    vscode
     starship
 )
 
-unamestr=$(uname)
-if [[ "$unamestr" == 'Linux' ]]; then
-    plugins=(
-      debian
-    )
-elif [[ "$unamestr" == 'Darwin' ]]; then
-    plugins+=(
-        macos
-    )
-fi
-
-# Configuration
-zstyle :omz:plugins:keychain agents gpg,ssh
-export COMPLETION_WAITING_DOTS="false"
-export DISABLE_UNTRACKED_FILES_DIRTY="true"
-export ENHANCD_FILTER="fzf --preview='lsd --tree --group-directories-first --depth 1 {}'"
-export ENHANCD_ENABLE_DOUBLE_DOT="false"
-export ENHANCD_HOOK_AFTER_CD="ls -a"
-export ZSH_ALIAS_FINDER_AUTOMATIC=true
+case "$(uname)" in
+    Darwin)
+        plugins+=(macos)
+        ;;
+    Linux)
+        plugins+=(debian)
+        ;;
+esac
 
 source $ZSH/oh-my-zsh.sh
+
+# Post-Oh My Zsh integrations
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/custom/plugins/enhancd/init.sh
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(ruff generate-shell-completion zsh)"
+eval "$(atuin init zsh)"
+
+# Local machine-specific config
 source "${HOME}/.zshrc.local"
 
-alias ls="lsd"
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
+# Aliases
+alias l='ll'
+alias lla='la'
+alias lt='eza --tree --group-directories-first'
 
 # Extras
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
