@@ -14,12 +14,17 @@ export ZOXIDE_CMD_OVERRIDE=cd
 zstyle ':omz:update' mode disabled
 
 # Completion and plugin configuration
+zstyle ':completion:*' verbose yes
 zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*:options' description yes
+zstyle ':completion:*:options' auto-description '%d'
 zstyle ':completion:*' menu no
+
 zstyle ':omz:plugins:eza' dirs-first yes
 zstyle ':omz:plugins:eza' git-status yes
 zstyle ':omz:plugins:eza' icons yes
 zstyle ':omz:plugins:ssh-agent' quiet yes
+
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 
 export COMPLETION_WAITING_DOTS="false"
@@ -61,6 +66,19 @@ case "$(uname)" in
         plugins+=(debian)
         ;;
 esac
+
+# Prefer native Zsh completions over Homebrew Git's bash-wrapper completions.
+# This gives richer Git option descriptions, e.g. `git diff --<Tab>`.
+if command -v brew >/dev/null 2>&1; then
+    zsh_functions_dir="$(brew --prefix zsh 2>/dev/null)/share/zsh/functions"
+
+    if [[ -d "$zsh_functions_dir" ]]; then
+        fpath=(
+            "$zsh_functions_dir"
+            ${fpath:#"$zsh_functions_dir"}
+        )
+    fi
+fi
 
 source $ZSH/oh-my-zsh.sh
 
