@@ -22,7 +22,7 @@ ZSH, just change your shell with the following command:
 
 and you're all set!
 
-The environment is in the lines of Python, Homebrew, Vim, Git, OSX/Linux.
+The environment is in the lines of Python, Homebrew, Neovim, Git, OSX/Linux.
 
 ### Sensible OS X defaults
 

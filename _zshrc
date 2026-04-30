@@ -10,6 +10,8 @@ fi
 export ZSH=$HOME/.zsh
 export STARSHIP_CONFIG=~/.starship.toml
 export ZOXIDE_CMD_OVERRIDE=cd
+export EDITOR=nvim
+export VISUAL=nvim
 
 zstyle ':omz:update' mode disabled
 
@@ -91,6 +93,9 @@ eval "$(atuin init zsh)"
 source "${HOME}/.zshrc.local"
 
 # Aliases
+alias vi='nvim'
+alias vim='nvim'
+alias vimdiff='nvim -d'
 alias l='ll'
 alias lla='la'
 alias lt='eza --tree --group-directories-first'

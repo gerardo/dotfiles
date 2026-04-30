@@ -155,4 +155,7 @@ fi
 export QUILT_PATCHES=debian/patches
 
 alias grep='grep --color'
-export EDITOR=vim
+alias vi='nvim'
+alias vim='nvim'
+alias vimdiff='nvim -d'
+export EDITOR=nvim

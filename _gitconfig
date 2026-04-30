@@ -1,5 +1,5 @@
 [core]
-    editor = vim -f
+    editor = nvim -f
     excludesfile = ~/.gitignore_global
     quotepath = false
     autocrlf = input
