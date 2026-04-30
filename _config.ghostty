@@ -1,0 +1,248 @@
+# ============================================================
+# Ghostty config for macOS
+# Goal: simple, reliable, agent-friendly
+# ============================================================
+
+
+# ------------------------------------------------------------
+# Identity / shell
+# ------------------------------------------------------------
+
+# Let Ghostty detect the shell and inject the right integration.
+# Gives prompt navigation, command-finished notifications, safer close
+# confirmation, working-directory inheritance, etc.
+shell-integration = detect
+
+# Useful for SSH-heavy workflows.
+shell-integration-features = ssh-env,ssh-terminfo
+
+# Keep Ghostty visible in Dock / Cmd-Tab.
+# If you mainly use quick terminal, change to: macos-hidden = always
+macos-hidden = never
+
+# Automatically use macOS Secure Input when Ghostty detects password prompts.
+macos-auto-secure-input = true
+
+
+# ------------------------------------------------------------
+# Font / text rendering
+# ------------------------------------------------------------
+
+font-family = JetBrainsMono Nerd Font
+font-size = 16
+
+# Slightly taller lines without making the terminal too airy.
+adjust-cell-height = 4%
+
+cursor-style = bar
+cursor-style-blink = false
+cursor-opacity = 1
+
+# Improve readability if colours get too low-contrast.
+# Set to 1 if you want exact theme colours.
+minimum-contrast = 1.1
+
+
+# ------------------------------------------------------------
+# Theme / colours
+# ------------------------------------------------------------
+
+theme = TokyoNight
+
+# macOS wide colour. Good on modern Mac displays.
+window-colorspace = display-p3
+
+# Mild transparency/blur. Reduce/remove blur if performance or clarity suffers.
+background-opacity = 0.92
+background-blur-radius = 16
+background-opacity = 0.96
+background-blur-radius = 8
+
+# ------------------------------------------------------------
+# Window / UI
+# ------------------------------------------------------------
+
+# Native macOS tabs integrated into the titlebar.
+# Note: yabai may treat native tabs as windows due to macOS API behaviour.
+macos-titlebar-style = tabs
+window-show-tab-bar = always
+window-new-tab-position = current
+
+macos-window-buttons = hidden
+macos-window-shadow = true
+window-decoration = auto
+
+# Let yabai/window state manage geometry. Avoid window-width/window-height.
+window-save-state = always
+
+# Visual breathing room.
+window-padding-x = 10
+window-padding-y = 8
+window-padding-balance = true
+window-padding-color = extend
+
+fullscreen = false
+maximize = false
+
+# Native fullscreen keeps tabs behaving more predictably.
+macos-non-native-fullscreen = false
+
+
+# ------------------------------------------------------------
+# Quick terminal
+# ------------------------------------------------------------
+
+# Treat this as a scratch terminal, not a full tabbed workspace.
+quick-terminal-position = top
+quick-terminal-size = 40%
+quick-terminal-animation-duration = 0.18
+quick-terminal-autohide = false
+quick-terminal-space-behavior = move
+
+
+# ------------------------------------------------------------
+# Scrollback / clipboard / mouse
+# ------------------------------------------------------------
+
+# Large scrollback for long Codex / Claude / OpenCode output.
+scrollback-limit = 200000
+
+# Safer paste behaviour into shells and REPLs.
+clipboard-paste-protection = true
+clipboard-paste-bracketed-safe = true
+
+copy-on-select = false
+mouse-hide-while-typing = true
+mouse-reporting = true
+
+
+# ------------------------------------------------------------
+# Agent-friendly notifications
+# ------------------------------------------------------------
+
+# Notify when long commands finish if the window is unfocused.
+notify-on-command-finish = unfocused
+
+# Keep bell feedback useful but not noisy.
+bell-features = no-attention,no-audio,title,border
+
+# Ghostty in-app notifications.
+app-notifications = clipboard-copy,config-reload
+
+
+# ------------------------------------------------------------
+# Links
+# ------------------------------------------------------------
+
+# Useful for agent output, GitHub links, logs, docs, etc.
+link-previews = true
+
+
+# ------------------------------------------------------------
+# Close behaviour / safety
+# ------------------------------------------------------------
+
+# Ask before closing active processes.
+# Shell integration avoids confirmation when sitting cleanly at prompt.
+confirm-close-surface = true
+
+# Keep Ghostty app open after last window is closed.
+quit-after-last-window-closed = false
+
+# Allow undo for recently closed windows/tabs/splits where supported.
+undo-timeout = 10s
+
+
+# ------------------------------------------------------------
+# Keybindings: core
+# ------------------------------------------------------------
+
+# Config
+keybind = cmd+,=open_config
+keybind = cmd+shift+,=reload_config
+
+# Command palette for less-frequent actions.
+keybind = cmd+shift+p=toggle_command_palette
+
+# Windows / tabs
+keybind = cmd+n=new_window
+keybind = cmd+t=new_tab
+keybind = cmd+w=close_surface
+keybind = cmd+shift+w=close_window
+
+keybind = cmd+shift+left=previous_tab
+keybind = cmd+shift+right=next_tab
+
+keybind = cmd+1=goto_tab:1
+keybind = cmd+2=goto_tab:2
+keybind = cmd+3=goto_tab:3
+keybind = cmd+4=goto_tab:4
+keybind = cmd+5=goto_tab:5
+keybind = cmd+6=goto_tab:6
+keybind = cmd+7=goto_tab:7
+keybind = cmd+8=goto_tab:8
+keybind = cmd+9=last_tab
+
+
+# ------------------------------------------------------------
+# Keybindings: splits
+# ------------------------------------------------------------
+
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+
+# Navigate splits.
+keybind = cmd+alt+left=goto_split:left
+keybind = cmd+alt+right=goto_split:right
+keybind = cmd+alt+up=goto_split:up
+keybind = cmd+alt+down=goto_split:down
+
+# Resize splits.
+keybind = cmd+ctrl+left=resize_split:left,20
+keybind = cmd+ctrl+right=resize_split:right,20
+keybind = cmd+ctrl+up=resize_split:up,20
+keybind = cmd+ctrl+down=resize_split:down,20
+
+keybind = cmd+shift+enter=toggle_split_zoom
+
+# ------------------------------------------------------------
+# Keybindings: search / prompt navigation
+# ------------------------------------------------------------
+
+keybind = cmd+f=start_search
+keybind = cmd+g=navigate_search:next
+keybind = cmd+shift+g=navigate_search:previous
+
+# Requires shell integration.
+keybind = cmd+up=jump_to_prompt:-1
+keybind = cmd+down=jump_to_prompt:1
+
+
+# ------------------------------------------------------------
+# Keybindings: agent workflow helpers
+# ------------------------------------------------------------
+
+# Write buffers to temp files.
+# Useful for dumping long agent output into your editor.
+keybind = cmd+shift+o=write_scrollback_file:open
+keybind = cmd+shift+c=write_selection_file:copy
+
+
+# ------------------------------------------------------------
+# Keybindings: font / appearance
+# ------------------------------------------------------------
+
+keybind = cmd+plus=increase_font_size:1
+keybind = cmd+minus=decrease_font_size:1
+keybind = cmd+0=reset_font_size
+
+# ------------------------------------------------------------
+# Keybindings: app visibility / quick terminal
+# ------------------------------------------------------------
+
+# Global quick terminal toggle.
+# macOS may ask for Accessibility permission.
+keybind = global:cmd+backquote=toggle_quick_terminal
+
+# Visibility toggle for all Ghostty windows.
+keybind = cmd+shift+h=toggle_visibility

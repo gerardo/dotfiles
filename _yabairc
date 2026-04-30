@@ -55,6 +55,10 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^zoom.us$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
-yabai -m rule --add app="^Karabiner-Elements$" manage=off
+# Ghostty Quick Terminal: don't tile/manage the drop-down window
+yabai -m rule --add app='^Ghostty$' subrole='AXFloatingWindow' manage=off sticky=on layer=above
+# Ghostty native tabs workaround
+yabai -m signal --add app='^Ghostty$' event=window_created action='yabai -m space --layout bsp'
+yabai -m signal --add app='^Ghostty$' event=window_destroyed action='yabai -m space --layout bsp'
 
 echo "yabai configuration loaded.."

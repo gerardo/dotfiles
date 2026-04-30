@@ -6,16 +6,40 @@ function link_file {
 
     if [ -e "${target}" ]; then
        # It's not a directory and is identical
-       if [ -f "${target}" ] &&  cmp $source $target &> /dev/null ; then
+       if [ -f "${target}" ] &&  cmp "${source}" "${target}" &> /dev/null ; then
            echo "Identical: $target"
        else
-          mv $target $target.bak
+          mv "${target}" "${target}.bak"
           echo "Linking $target"
-          ln -sf ${source} ${target}
+          ln -sf "${source}" "${target}"
        fi
     else
         echo "Linking $target"
-        ln -sf ${source} ${target}
+        ln -sf "${source}" "${target}"
+    fi
+}
+
+function link_ghostty_config {
+    source="${PWD}/_config.ghostty"
+    target="${HOME}/.config/ghostty/config.ghostty"
+    target_dir="$(dirname "${target}")"
+
+    mkdir -p "${target_dir}"
+
+    if [ -e "${target}" ]; then
+       if [ -L "${target}" ] && [ "$(readlink "${target}")" = "${source}" ]; then
+           echo "Identical: $target"
+       elif [ -f "${target}" ] && cmp "${source}" "${target}" &> /dev/null ; then
+           echo "Linking $target"
+           ln -sf "${source}" "${target}"
+       else
+          mv "${target}" "${target}.bak"
+          echo "Linking $target"
+          ln -sf "${source}" "${target}"
+       fi
+    else
+        echo "Linking $target"
+        ln -sf "${source}" "${target}"
     fi
 }
 
@@ -23,16 +47,24 @@ echo "Linking dotfiles..."
 
 for i in _*
   do
-    link_file $i
+    case "$i" in
+      _config.ghostty)
+        ;;
+      *)
+        link_file "$i"
+        ;;
+    esac
   done
 
-cd _vim/
+link_ghostty_config
+
+cd _vim/ || exit
 
 vimfiles=( _vimrc _gvimrc )
 
-for i in ${vimfiles[@]}
+for i in "${vimfiles[@]}"
   do
-    link_file $i
+    link_file "$i"
   done
 
 cd ..
@@ -48,7 +80,7 @@ git submodule foreach git submodule update
 
 echo "Git syncing in _zsh  directory"
 
-cd _zsh/
+cd _zsh/ || exit
 
 git submodule sync
 git submodule init
